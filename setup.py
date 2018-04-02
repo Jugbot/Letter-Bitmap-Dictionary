@@ -5,7 +5,7 @@ setup(
     name='lbdict',
     description='A class for storing the pixel values of letters.',
     long_description=long_description,
-    version='0.1.1',
+    version='0.1.2',
     url='https://github.com/Jugbot/Letter-Bitmap-Dictionary',
     keywords='bitmap font dictionary',
     author='Jugbot',
