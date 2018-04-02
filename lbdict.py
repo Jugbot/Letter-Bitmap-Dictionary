@@ -1,6 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 import pickle
-import sys
 import numpy as np
 
 CHARACTERS = ''.join([chr(x) for x in range(32, 127)])
@@ -10,13 +9,13 @@ class LetterBitmapDictionary:
     """ Generates and stores a dictionary object containing character key with binary tuple data representing the
     pixels of the letter when drawn in the specified font.
     """
-    def __init__(self, font, size, data_folder, maxy=sys.maxsize, maxx=sys.maxsize, use_save=True, transposed=False):
+    def __init__(self, font, size, data_folder, sety=None, setx=None, use_save=True, transposed=False, precision=1):
         """ LetterBitmapDictionary
         :param font: path to font
         :param size: size to draw font (affects canvas size)
         :param data_folder: path to folder where the dictionary can be saved for later use
-        :param maxy: crop the image vertically by pixels
-        :param maxx: crop the image horizontally by pixels
+        :param sety: crop the image vertically by pixels
+        :param setx: crop the image horizontally by pixels
         :param use_save: enable/disable saving the dictionary
         :param transposed: flip rows/cols of tuple
         """
@@ -28,18 +27,18 @@ class LetterBitmapDictionary:
             try:
                 self.load()
             except IOError:
-                self._createdic(maxx, maxy, transposed)
+                self._createdic(setx, sety, transposed, precision)
                 self.save()
         else:
-            self._createdic(maxx, maxy, transposed)
+            self._createdic(setx, sety, transposed, precision)
 
-    def _createdic(self, maxx, maxy, transpose):
+    def _createdic(self, setx, sety, transpose, precision):
         for c in CHARACTERS:
             fontsize = self.font.getsize(c)
-            imagesize = (min(fontsize[0], maxx), min(fontsize[1], maxy))
+            imagesize = (setx if setx else fontsize[0], sety if sety else fontsize[1])
             image = Image.new('1', imagesize)
             drawer = ImageDraw.Draw(image)
-            drawer.text((0, 0), c, font=self.font, fill=1)
+            drawer.text((0, 0), c, font=self.font, fill=precision)
             nparr = np.asarray(image)
             if transpose:
                 nparr = nparr.T
