@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
-Name: LetterBitmapDictionary
-Version: 0.1.2
+Name: lbdict
+Version: 0.1.0
 Summary: A class for storing the pixel values of letters.
 Home-page: https://github.com/Jugbot/Letter-Bitmap-Dictionary
 Author: Jugbot

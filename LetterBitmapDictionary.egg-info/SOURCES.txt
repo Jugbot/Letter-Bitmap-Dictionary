@@ -1,8 +1,0 @@
-MANIFEST.in
-README.md
-setup.py
-LetterBitmapDictionary.egg-info/PKG-INFO
-LetterBitmapDictionary.egg-info/SOURCES.txt
-LetterBitmapDictionary.egg-info/dependency_links.txt
-LetterBitmapDictionary.egg-info/requires.txt
-LetterBitmapDictionary.egg-info/top_level.txt
