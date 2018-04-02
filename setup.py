@@ -10,6 +10,6 @@ setup(
     keywords='bitmap font dictionary',
     author='Jugbot',
     author_email='lucasp465@gmail.com',
-    install_requires=['pillow'],
+    install_requires=['pillow', 'numpy'],
     py_modules=['lbdict']
 )
