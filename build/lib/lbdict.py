@@ -24,7 +24,7 @@ class LetterBitmapDictionary:
         self.chardict = {}
         try:
             self.load()
-        except FileNotFoundError:
+        except IOError:
             self._createdic(maxx, maxy)
             if use_save:
                 self.save()
